@@ -8,6 +8,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Notes from "@/pages/notes.vue";
 import Default from "@/layouts/default.vue";
+import Todo from "@/pages/todo.vue";
 
 const routes = [
   {
@@ -25,6 +26,17 @@ const routes = [
         name: "notes",
         path: "",
         component: Notes
+      },
+    ]
+  },
+  {
+    path: "/todo",
+    component: Default,
+    children: [
+      {
+        name: "todo",
+        path: "",
+        component: Todo
       },
     ]
   }

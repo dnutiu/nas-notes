@@ -21,12 +21,12 @@
   <v-navigation-drawer
     v-model="drawer"
     :location="$vuetify.display.mobile ? 'bottom' : undefined"
-    expand-on-hover
     rail
   >
     <v-list>
-      <v-list-item prepend-icon="mdi-note-multiple" title="Notes" value="notes"></v-list-item>
-      <v-list-item prepend-icon="mdi-list-status" title="To Do" value="todo"></v-list-item>
+      <router-link v-for="item in menuItems" :to="item.routeName">
+        <v-list-item :prepend-icon="item.icon" :title="item.title" :value="item.title" />
+      </router-link>
     </v-list>
   </v-navigation-drawer>
 
@@ -44,7 +44,19 @@ export default {
   },
   data() {
     return {
-      drawer: false,
+      drawer: true,
+      menuItems: [
+        {
+          title: "Notes",
+          icon: "mdi-note-multiple",
+          routeName: "notes"
+        },
+        {
+          title: "To DO",
+          icon: "mdi-list-status",
+          routeName: "todo"
+        }
+      ],
       group: null
     }
   },
